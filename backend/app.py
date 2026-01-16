@@ -22,7 +22,7 @@ Ative o ambiente virtual:
 .\.venv\Scripts\activate
 
 Após isso basta rodar e clicar na porta que vai aparecer no terminal segurando a tecla "CTRL":
-uvicorn app:app
+uvicorn app:app --reload
 '''
 #Agora vamos produzir, e entender os exemplos de "GET" abaixo:
 
