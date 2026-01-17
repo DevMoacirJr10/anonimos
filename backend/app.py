@@ -35,7 +35,9 @@ vendas = {
 
 @app.get("/")
 def home():
-    return {"Vendas": len(vendas)}
+    return { "Status" : "API Online",
+            "Projeto":"Anônimos",
+        "Vendas": len(vendas)}
 
 @app.get("/vendas/{id_venda}")
 def pegar_venda(id_venda: int):
