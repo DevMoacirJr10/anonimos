@@ -4,6 +4,7 @@ app = FastAPI()
 
 #Importante
 '''
+Bem vindos
 Antes de fazer qualquer coisa no código(serve até mesmo se for só testar),
 verificar se tem o python instalado na máquina, seguir o comando abaixo:
 python --version
