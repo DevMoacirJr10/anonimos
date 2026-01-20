@@ -1,15 +1,47 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Document</title>
-    <link rel="stylesheet" href="teste.css"/>
-</head>
-<body>
-    <h1>Olá Lyon, vamos trabalhar aqui</h1>
-    <button onclick="ola()">Clique para testar</button>
+<html lang="pt-BR">
 
-    <script src="teste.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Laboratório GSAP - SPUT FOGUETE</title>
+  <!-- CSS -->
+  <link rel="stylesheet" href="teste.css" />
+  <!-- GSAP -->
+  <script src="https://unpkg.com/gsap@3/dist/gsap.min.js"></script>
+</head>
+
+<body>
+  <main class="app">
+    <!-- SPUT FOGUETE -->
+    <section class="sput-area">
+      <img src="assets/img/sputfoguete.png" 
+        alt="Imagem do Sput Foguete" 
+        class="sput-foguete"
+       />
+    </section>
+
+    <!-- COMPONENTES BASE -->
+    <section class="componentes">
+      <!-- Card -->
+      <div class="card">
+        <h3>Card Base</h3>
+        <p>Componentes isolados enquanto o layout final não chega.</p>
+            <!-- Input -->
+            <input 
+                type="text" 
+                class="input-text" 
+                placeholder="Digite algo..." 
+            />
+            <!-- Botão -->
+            <button class="btn-primary">
+                Lançar 🚀
+            </button>
+      </div>
+    </section>
+  </main>
+  <!-- JS -->
+  <script src="teste.js"></script>
 </body>
 </html>
