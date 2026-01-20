@@ -9,6 +9,9 @@ function App() {
           <p>Luminho</p> 
           <button>Excluir</button></li>
         <li>
+          <p>yuki</p> 
+          <button>Excluir</button></li>
+        <li>
           <p>Sput</p>
           <button>Excluir</button></li>
         <li>
