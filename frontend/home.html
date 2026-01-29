@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Anônimos MMLNT</title>
     <link rel="stylesheet" href="style.css" />
-    <link rel="icon" href="assets\img\luminho.png" ype="image/png"/>
+    <link rel="icon" href="assets/img/luminho.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -16,31 +16,41 @@
   <body>
     <header>
       <nav class="navbar">
-        <a href="#" class="nav-link" aria-label="Contato">Contato</a>
-        <a href="#" class="nav-link" aria-label="Nossa História"
-          >Nossa História</a
-        >
-        <a href="#" class="nav-link" aria-label="Livros">Livros</a>
-        <a href="#" class="nav-link" aria-label="Pagamento">Pagamento</a>
+        <a href="#" class="nav-link">Contato</a>
+        <a href="#" class="nav-link">Nossa História</a>
+        <a href="#" class="nav-link">Livros</a>
+        <a href="#" class="nav-link">Pagamento</a>
       </nav>
     </header>
+
     <main class="home-screen">
       <section class="main-content">
         <div class="text-content">
           <h1 class="logo-name1">ANÔNIMOS</h1>
-          <h2 class="logo-name2">MMLNT</h2>
+          <div class="reveal-container">
+            <h2 class="logo-name2">MMLNT</h2>
+            <div class="arrow-reveal"></div>
+          </div>
+
           <p class="description">
             Você já tentou despertar o lado científico da sua criança?
           </p>
         </div>
+
         <div class="image-content">
           <img
-            src="assets\img\luminho.png"
-            alt="Luminho sorrindo"
+            src="assets/img/luminho comemorando (01).png"
+            alt="Luminho comemorando"
             class="luminho-png"
           />
         </div>
+
+        <div class="button-container">
+          <a href="#" class="btn-login">Fazer Login</a>
+        </div>
       </section>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+      <script src="script.js"></script>
     </main>
   </body>
 </html>
