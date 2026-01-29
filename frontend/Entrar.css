@@ -1,0 +1,174 @@
+
+html body {
+  height: 100vh;
+  background: radial-gradient(circle at right, #0b1026, #050816);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  max-width: 1728px;
+  max-height: 1117px;
+  aspect-ratio: 1728 / 1117;
+  display: flex;
+}
+
+h1 {
+  font-family: "Jockey One", sans-serif;
+}
+
+h2 {
+  font-family: "Joan", sans-serif;
+}
+
+/* =========================
+   LOGIN
+========================= */
+.login-area {
+  width: 40%;
+  padding: 60px;
+  color: white;
+}
+
+.login-area h1 {
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.login-area h2 {
+  font-size: 26px;
+  color: #f5b400;
+  margin-bottom: 40px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form input {
+  padding: 14px;
+  border-radius: 10px;
+  border: 1px solid #aaa;
+  background: transparent;
+  color: white;
+}
+
+.btn-login {
+  margin-top: 10px;
+  padding: 14px;
+  border-radius: 20px;
+  border: none;
+  background: #2c2c3a;
+  color: white;
+  cursor: pointer;
+}
+
+.register-text {
+  margin-top: 40px;
+  opacity: 0.8;
+}
+
+.btn-register {
+  margin-top: 10px;
+  padding: 10px 20px;
+  border-radius: 20px;
+  border: none;
+  cursor: pointer;
+}
+
+/* =========================
+   ESPAÇO
+========================= */
+.space-area {
+  width: 80%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.sun {
+  position: absolute;
+  left: 44.94%;
+  top: 12.71%;
+  width: 25.06%;
+}
+/* Planetas */
+/* Coloquei -30 graus no left para todos, 
+para centralizar os planetas deixando-os mais próximos do login*/
+.merc {
+  position: absolute;
+  left: 53.22%;
+  top: 72.61%;
+  width: 4.69%;
+}
+
+.venu {
+  position: absolute;
+  left: 30.19%;
+  top: 14.68%;
+  width: 6.77%;
+}
+
+.terr {
+  position: absolute;
+  left: 28.84%;
+  top: 57.93%;
+  width: 6.77%;
+}
+
+.mart {
+  position: absolute;
+  left: 41.58%;
+  top: 9.31%;
+  width: 5.84%;
+}
+
+.jupi {
+  position: absolute;
+  left: 17.86%;
+  top: 32.42%;
+  width: 13.31%;
+}
+
+.satu {
+  position: absolute;
+  left: 38.63%;
+  top: 52.83%;
+  width: 16.95%;
+}
+
+.uran {
+  position: absolute;
+  left: 32.27%;
+  top: 28.91%;
+  width: 12.88%;
+}
+
+.netu {
+  position: absolute;
+  left: 63.23%;
+  top: 56.04%;
+  width: 6.77%;
+}
+/* Cometa */
+
+.comet {
+  position: absolute;
+  width: 141px;
+  top: -150px;     /* começa fora da tela */
+  left: -200px;   /* fora à esquerda */
+  z-index: 10;
+  pointer-events: none;
+}
+/*.comet {
+  position: absolute;
+  left: 0.5%;
+  top: 0.5%;
+  width: 6%;
+  transform: rotate(-95deg);
+}*/
