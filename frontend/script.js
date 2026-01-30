@@ -76,7 +76,7 @@ window.addEventListener("load", () => {
     y: -20,
     scale: 1,
     duration: 0.6,
-    repeat: -1,
+    repeat: 1,
     yoyo: true,
     ease: "sine.inOut",
     stagger: {
