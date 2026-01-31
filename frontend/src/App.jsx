@@ -12,7 +12,7 @@ function App() {
           placeholder="Digite seu usuário logado  "
         />
         <label for="password">Senha: </label>
-        <input type="text" id="password" placeholder="Digite sua senha" />
+        <input type="password" id="password" placeholder="Digite sua senha" />
         <button class="btn-login">Entrar</button>
       </div>
 
@@ -24,13 +24,13 @@ function App() {
         <input type="email" id="email" placeholder="E-mail" />
         <label for="new-password">Crie uma nova senha: </label>
         <input
-          type="new-password"
+          type="password"
           id="new-password"
           placeholder="Crie uma nova senha"
         />
         <label for="new-password">Confirme sua nova senha: </label>
         <input
-          type="new-password"
+          type="password"
           id="new-password"
           placeholder="Confirme sua nova senha"
         />
