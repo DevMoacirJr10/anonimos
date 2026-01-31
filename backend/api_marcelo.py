@@ -6,20 +6,25 @@ from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
+# Configuração de CORS para permitir a conexão com o Frontend na Vercel
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"], # Permite que qualquer site (Vercel ou Local) acesse
+    allow_origins=["*"],
     allow_methods=["*"],
     allow_headers=["*"],
 )
 
-# 1. Definir o Contrato de Dados (Sua tarefa da semana)
+# 1. Modelos de Dados (Contratos da API)
 class CadastroUsuario(BaseModel):
     nome: str
     email: str
     senha: str
 
-# 2. Lógica de Inicialização do Banco (Lógica do Neto)
+class LoginUsuario(BaseModel):
+    email: str
+    senha: str
+
+# 2. Inicialização do Banco de Dados
 def iniciar_banco():
     conexao = sqlite3.connect('banco_teste.db')
     cursor = conexao.cursor()
@@ -36,13 +41,13 @@ def iniciar_banco():
 
 iniciar_banco()
 
-# 3. Sua Rota de Teste
+# 3. Rota de Cadastro
 @app.post("/testar_cadastro")
 async def testar_cadastro(usuario: CadastroUsuario):
     conexao = sqlite3.connect('banco_teste.db')
     cursor = conexao.cursor()
     
-    # Gerando o hash da senha (Segurança)
+    # Segurança: Transformando a senha em Hash antes de salvar
     senha_hash = hashlib.sha256(usuario.senha.encode()).hexdigest()
     
     try:
@@ -54,3 +59,28 @@ async def testar_cadastro(usuario: CadastroUsuario):
         raise HTTPException(status_code=400, detail="Este e-mail já existe no banco!")
     finally:
         conexao.close()
+
+# 4. Rota de Login (Nova Rota para sua tela de Teste)
+@app.post("/testar_login")
+async def testar_login(dados: LoginUsuario):
+    conexao = sqlite3.connect('banco_teste.db')
+    cursor = conexao.cursor()
+    
+    # Busca o usuário pelo e-mail
+    cursor.execute("SELECT senha_hash, nome FROM usuarios WHERE email = ?", (dados.email,))
+    resultado = cursor.fetchone()
+    conexao.close()
+    
+    if not resultado:
+        raise HTTPException(status_code=400, detail="Usuário não encontrado!")
+    
+    senha_banco = resultado[0]
+    nome_usuario = resultado[1]
+    
+    # Verifica se a senha digitada bate com o Hash do banco
+    senha_digitada_hash = hashlib.sha256(dados.senha.encode()).hexdigest()
+    
+    if senha_digitada_hash == senha_banco:
+        return {"status": "sucesso", "mensagem": f"Bem-vindo, {nome_usuario}!"}
+    else:
+        raise HTTPException(status_code=401, detail="Senha incorreta!")
