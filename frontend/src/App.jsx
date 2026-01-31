@@ -1,36 +1,34 @@
-import React, { useState } from 'react'; // 1. Importamos o 'useState' para o React ter memória
+import React, { useState } from 'react';
 
 function App() {
-  // --- MEMÓRIA DO FORMULÁRIO DE LOGIN ---
-  const [loginUser, setLoginUser] = useState('');
-  const [loginPass, setLoginPass] = useState('');
+  // 1. Criando a "memória" para os campos (O que o usuário digita)
+  const [emailLogin, setEmailLogin] = useState('');
+  const [senhaLogin, setSenhaLogin] = useState('');
+  const [nomeCad, setNomeCad] = useState('');
+  const [emailCad, setEmailCad] = useState('');
+  const [senhaCad, setSenhaCad] = useState('');
 
-  // --- MEMÓRIA DO FORMULÁRIO DE CADASTRO ---
-  const [nome, setNome] = useState('');
-  const [email, setEmail] = useState('');
-  const [senha, setSenha] = useState('');
+  const API_URL = "https://anonimos-wph7.onrender.com"; // Seu endereço no Render
 
-  const URL_API = "https://anonimos-wph7.onrender.com"; // Endereço do seu "garçom" (Backend)
-
-  // 2. FUNÇÃO QUE CHAMA O LOGIN
-  const fazerLogin = async () => {
-    const resposta = await fetch(`${URL_API}/testar_login`, {
+  // 2. Função para o botão ENTRAR
+  const handleLogin = async () => {
+    const res = await fetch(`${API_URL}/testar_login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: loginUser, senha: loginPass }) // Transforma em JSON
+      body: JSON.stringify({ email: emailLogin, senha: senhaLogin })
     });
-    const dados = await resposta.json();
-    alert(dados.mensagem || dados.detail); // Mostra o que o backend respondeu
+    const dados = await res.json();
+    alert(dados.mensagem || dados.detail);
   };
 
-  // 3. FUNÇÃO QUE CHAMA O CADASTRO
-  const fazerCadastro = async () => {
-    const resposta = await fetch(`${URL_API}/testar_cadastro`, {
+  // 3. Função para o botão CRIAR CONTA
+  const handleCadastro = async () => {
+    const res = await fetch(`${API_URL}/testar_cadastro`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nome: nome, email: email, senha: senha })
+      body: JSON.stringify({ nome: nomeCad, email: emailCad, senha: senhaCad })
     });
-    const dados = await resposta.json();
+    const dados = await res.json();
     alert(dados.mensagem || dados.detail);
   };
 
@@ -40,41 +38,24 @@ function App() {
 
       <div className="login">
         <h2>Login Teste</h2>
-        <label htmlFor="user">Login: </label>
-        <input 
-          type="text" id="user" placeholder="Digite seu e-mail cadastrado" 
-          value={loginUser} onChange={(e) => setLoginUser(e.target.value)} 
-        />
-        
-        <label htmlFor="password">Senha: </label>
-        <input 
-          type="password" id="password" placeholder="Digite sua senha" 
-          value={loginPass} onChange={(e) => setLoginPass(e.target.value)}
-        />
-        <button className="btn-login" onClick={fazerLogin}>Entrar</button>
+        <label>Login: </label>
+        <input type="text" value={emailLogin} onChange={(e) => setEmailLogin(e.target.value)} placeholder="E-mail" />
+        <label>Senha: </label>
+        <input type="password" value={senhaLogin} onChange={(e) => setSenhaLogin(e.target.value)} placeholder="Senha" />
+        {/* AQUI ESTÁ A MUDANÇA: O onClick */}
+        <button className="btn-login" onClick={handleLogin}>Entrar</button>
       </div>
 
       <div className="new-login">
         <h2>Criar Conta Teste</h2>
-        <label htmlFor="new-user">Usuário: </label>
-        <input 
-          type="text" id="new-user" placeholder="Seu nome" 
-          value={nome} onChange={(e) => setNome(e.target.value)}
-        />
-
-        <label htmlFor="email">E-mail: </label>
-        <input 
-          type="email" id="email" placeholder="E-mail" 
-          value={email} onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <label htmlFor="new-password">Crie uma nova senha: </label>
-        <input 
-          type="password" id="new-password" placeholder="Crie uma nova senha" 
-          value={senha} onChange={(e) => setSenha(e.target.value)}
-        />
-
-        <button className="btn-new-login" onClick={fazerCadastro}>Criar Conta</button>
+        <label>Usuário: </label>
+        <input type="text" value={nomeCad} onChange={(e) => setNomeCad(e.target.value)} placeholder="Nome" />
+        <label>E-mail: </label>
+        <input type="email" value={emailCad} onChange={(e) => setEmailCad(e.target.value)} placeholder="E-mail" />
+        <label>Senha: </label>
+        <input type="password" value={senhaCad} onChange={(e) => setSenhaCad(e.target.value)} placeholder="Senha" />
+        {/* AQUI TAMBÉM: O onClick */}
+        <button className="btn-new-login" onClick={handleCadastro}>Criar Conta</button>
       </div>
     </>
   );
