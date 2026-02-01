@@ -1,3 +1,4 @@
+/* global gsap */
 // Animação suave dos planetas
 gsap.utils.toArray(".planet").forEach((planet, i) => {
   gsap.to(planet, {
