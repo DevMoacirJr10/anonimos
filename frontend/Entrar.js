@@ -26,22 +26,22 @@ function flyComet() {
     comet,
     {
       x: -300,
-      y: -200,
+      y: -300,
       rotation: -95,
       opacity: 1
     },
     {
-      x: 1900,
+      x: 1100,
       y: 900,
       rotation: -95,
-      duration: 5,
+      duration: 6,
       ease: "power2.inOut",
       onComplete: () => {
         gsap.set(comet, { opacity: 0 });
         setTimeout(() => {
           gsap.set(comet, { opacity: 1 });
           flyComet();
-        }, 1500); // tempo até o próximo cometa
+        }, 10); // tempo até o próximo cometa
       }
     }
   );

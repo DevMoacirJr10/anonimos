@@ -11,6 +11,7 @@ body {
   justify-content: center;
   align-items: center;
   margin: 0;
+  overflow: hidden;
 }
 
 .container {
@@ -26,10 +27,9 @@ body {
    LOGIN
 ========================= */
 .login-area {
-  width: 40%;
-  padding: 60px;
+  width: 65%;
+  padding: 50px;
   color: white;
-  margin-left: 30px;
 }
 
 .text-content {
@@ -105,75 +105,75 @@ body {
    ESPAÇO
 ========================= */
 .space-area {
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   position: relative;
   overflow: hidden;
 }
 
 .sun {
   position: absolute;
-  left: 74%;
-  top: 12.71%;
-  width: 25.06%;
+  left: 64%;
+  top: 10%;
+  width: 34.96%;
 }
 /* Planetas */
 /* Coloquei -30 graus no left para todos, 
 para centralizar os planetas deixando-os mais próximos do login*/
 .merc {
   position: absolute;
-  left: 85%;
-  top: 72.61%;
-  width: 4.69%;
+  left: 74%;
+  top: 75%;
+  width: 6.615%;
 }
 
 .venu {
   position: absolute;
-  left: 56%;
-  top: 14.68%;
-  width: 6.77%;
+  left: 32%;
+  top: 14%;
+  width: 9.4395%;
 }
 
 .terr {
   position: absolute;
-  left: 55%;
+  left: 32%;
   top: 57.93%;
-  width: 6.77%;
+  width: 9.4395%;
 }
 
 .mart {
   position: absolute;
-  left: 69%;
-  top: 9.31%;
-  width: 5.84%;
+  left: 53%;
+  top: 5%;
+  width: 8.0745%;
 }
 
 .jupi {
   position: absolute;
-  left: 45%;
-  top: 32.42%;
-  width: 13.31%;
+  left: 12%;
+  top: 28%;
+  width: 18.648%;
 }
 
 .satu {
   position: absolute;
-  left: 68%;
-  top: 52.83%;
-  width: 16.95%;
+  left: 47%;
+  top: 54%;
+  width: 23.6565%;
 }
 
 .uran {
   position: absolute;
-  left: 60%;
-  top: 28.91%;
-  width: 12.88%;
+  left: 40%;
+  top: 27%;
+  width: 17.9655%;
 }
 
 .netu {
   position: absolute;
-  left: 93%;
-  top: 56.04%;
-  width: 6.77%;
+  left: 89%;
+  top: 60%;
+  width: 9.4395%;
 }
 /* Cometa */
 
@@ -182,7 +182,7 @@ para centralizar os planetas deixando-os mais próximos do login*/
   width: 141px;
   top: -150px;     /* começa fora da tela */
   left: -200px;   /* fora à esquerda */
-  z-index: 10;
+  z-index: -10;
   pointer-events: none;
 }
 /*.comet {
