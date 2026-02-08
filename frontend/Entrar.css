@@ -1,194 +1,215 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    height: 100vh;
+    background-image: url("assets/img/background-create.png");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    margin: 0;
+    overflow: hidden;
+  }
+
+  .container {
+    width: 100%;
+    height: 100%;
+    max-width: 1728px;
+    max-height: 1117px;
+    display: flex;
+  }
+
+  .login-area {
+    width: 65%;
+    padding: 50px;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .text-content {
+    translate: -130px;
+  }
+
+  .logo-name1 {
+    font-size: 48px;
+    font-family: "Jockey One", sans-serif;
+    color: white;
+    font-size: 71px;
+    letter-spacing: 2px;  
+  }
+
+  .logo-name2 {
+    font-size: 36px;
+    color: rgb(248, 150, 71);
+    margin-bottom: 40px;
+    letter-spacing: 2px;  
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  a:visited {
+    color: inherit;
+  }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  .form input {
+    padding: 10px 30px;
+    border-radius: 10px;
+    border: 1px solid rgb(255, 255, 255);
+    background: transparent;
+    color: white;
+    box-sizing: border-box;
+    font-family: "Joan", sans-serif;
+    font-size: 20px;
+  }
+
+  .btn-login {
+    margin-top: 10px;
+    padding: 10px;
+    height: auto;
+    width: 200px;
+    border-radius: 20px;
+    border: none;
+    background: rgb(18, 20 ,43 );
+    font-family: "Joan", sans-serif;
+    font-size: 12px;
+    color: white;
+    cursor: pointer;
+    box-shadow: -5px 10px 20px rgb(0, 0, 0);
+    transition: transform 0.2s;
+  }
+
+  .btn-login:hover {
+  transform: scale(1.1);
 }
 
-body {
-  height: 100vh;
-  background-color: #010214;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0;
-  overflow: hidden;
-}
+  .register-text {
+    margin-top: 100px;
+    opacity: 0.8;
+    font-family: "Joan", sans-serif;
+    font-size: 20px;
+  }
 
-.container {
-  width: 100%;
-  height: 100%;
-  max-width: 1728px;
-  max-height: 1117px;
-  aspect-ratio: 1728 / 1117;
-  display: flex;
-}
+  .btn-register {
+    margin-top: 10px;
+    padding: 10px 50px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, 0.7) 47%, rgba(5, 7, 32, 1) 100%); 
+    border: none;
+    cursor: pointer;
+    font-family: "Joan", sans-serif;
+    font-size: 20px;
+    transition: transform 0.2s;
+  }
 
-/* =========================
-   LOGIN
-========================= */
-.login-area {
-  width: 65%;
-  padding: 50px;
-  color: white;
-}
+  .btn-register:hover {
+    transform: scale(1.1);
+  }
 
-.text-content {
-  text-align: center;
-}
+  .space-area {
+    width: 35%;
+    height: 100%;
+    position: relative;
+    overflow: visible;
+  }
 
-.logo-name1 {
-  font-size: 48px;
-  font-family: "Jockey One", sans-serif;
-  color: white;
-  font-size: 71px;
-  letter-spacing: 2px;  
-}
+  .sun {
+    position: absolute;
+    left: 70%;
+    top: 10%;
+    width: 60%;
+  }
+  
+  .merc {
+    position: absolute;
+    left: 90%;
+    top: 75%;
+    width: 11.36%;
+  }
 
-.logo-name2 {
-  font-size: 36px;
-  color: rgb(248, 150, 71);
-  margin-bottom: 40px;
-  letter-spacing: 2px;  
-}
+  .venu {
+    position: absolute;
+    left: 25%;
+    top: 14%;
+    width: 16.21%;
+  }
 
-.form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-}
+  .terr {
+    position: absolute;
+    left: 20%;
+    top: 57.93%;
+    width: 16.21%;
+  }
 
-.form input {
-  padding: 10px 30px;
-  border-radius: 10px;
-  border: 1px solid rgb(255, 255, 255);
-  background: transparent;
-  color: white;
-  box-sizing: border-box;
-  font-family: "Joan", sans-serif;
-  font-size: 20px;
-}
+  .mart {
+    position: absolute;
+    left: 53%;
+    top: 5%;
+    width: 14.40%;
+  }
 
-.btn-login {
-  margin-top: 10px;
-  padding: 10px;
-  height: auto;
-  width: 200px;
-  border-radius: 20px;
-  border: none;
-  background: rgb(18, 20 ,43 );
-  font-family: "Joan", sans-serif;
-  font-size: 12px;
-  color: white;
-  cursor: pointer;
-}
+  .jupi {
+    position: absolute;
+    left: -8%;
+    top: 28%;
+    width: 31.87%;
+  }
 
-.register-text {
-  margin-top: 100px;
-  opacity: 0.8;
-  font-family: "Joan", sans-serif;
-  font-size: 20px;
-}
+  .satu {
+    position: absolute;
+    left: 47%;
+    top: 54%;
+    width: 40.60%;
+  }
 
-.btn-register {
-  margin-top: 10px;
-  padding: 10px 50px;
-  border-radius: 10px;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.7) 47%, rgba(5, 7, 32, 1) 100%); 
-  border: none;
-  cursor: pointer;
-  font-family: "Joan", sans-serif;
-  font-size: 20px;
-}
+  .uran {
+    position: absolute;
+    left: 33%;
+    top: 24%;
+    width: 30.84%;
+  }
 
-/* =========================
-   ESPAÇO
-========================= */
-.space-area {
-  width: 100vw;
-  height: 100vh;
-  position: relative;
-  overflow: hidden;
-}
+  .netu {
+    position: absolute;
+    left: 115%;
+    top: 60%;
+    width: 16.21%;
+  }
 
-.sun {
-  position: absolute;
-  left: 64%;
-  top: 10%;
-  width: 34.96%;
-}
-/* Planetas */
-/* Coloquei -30 graus no left para todos, 
-para centralizar os planetas deixando-os mais próximos do login*/
-.merc {
-  position: absolute;
-  left: 74%;
-  top: 75%;
-  width: 6.615%;
-}
+  .comet {
+    position: absolute;
+    width: 141px;
+    top: -150px;     
+    left: -200px;   
+    z-index: -10;
+    pointer-events: none;
+  }
 
-.venu {
-  position: absolute;
-  left: 32%;
-  top: 14%;
-  width: 9.4395%;
-}
+  .contact {
+    translate: -230px 650px;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    
+  }
 
-.terr {
-  position: absolute;
-  left: 32%;
-  top: 57.93%;
-  width: 9.4395%;
-}
-
-.mart {
-  position: absolute;
-  left: 53%;
-  top: 5%;
-  width: 8.0745%;
-}
-
-.jupi {
-  position: absolute;
-  left: 12%;
-  top: 28%;
-  width: 18.648%;
-}
-
-.satu {
-  position: absolute;
-  left: 47%;
-  top: 54%;
-  width: 23.6565%;
-}
-
-.uran {
-  position: absolute;
-  left: 40%;
-  top: 27%;
-  width: 17.9655%;
-}
-
-.netu {
-  position: absolute;
-  left: 89%;
-  top: 60%;
-  width: 9.4395%;
-}
-/* Cometa */
-
-.comet {
-  position: absolute;
-  width: 141px;
-  top: -150px;     /* começa fora da tela */
-  left: -200px;   /* fora à esquerda */
-  z-index: -10;
-  pointer-events: none;
-}
-/*.comet {
-  position: absolute;
-  left: 0.5%;
-  top: 0.5%;
-  width: 6%;
-  transform: rotate(-95deg);
-}*/
+  .insta, .email {
+    font-family: "Joan", sans-serif;
+    font-size: 16px;
+    color: rgb(248, 150, 71);
+    margin-bottom: 5px;
+  } 
