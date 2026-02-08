@@ -75,6 +75,13 @@
     box-sizing: border-box;
     font-family: "Joan", sans-serif;
     font-size: 20px;
+    outline: none;      
+    box-shadow: none; 
+  }
+
+  .form input:focus {
+    outline: none;      
+    box-shadow: none; 
   }
 
   .btn-login {
