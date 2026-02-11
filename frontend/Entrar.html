@@ -23,11 +23,11 @@
         <div class="text-content">
           <h1 class="logo-name1"><a href="home.html">ANÔNIMOS</a></h1>
           <h2 class="logo-name2"><a href="home.html">MMLNT</a></h2>
-          <div class="form">
-            <input  type="text" placeholder="Login:" />
-            <input type="password" placeholder="Senha:" />
-            <button class="btn-login">LOGIN</button>
-          </div>
+          <form class="form" id="loginForm">
+            <input  type="email" placeholder="Login:" id="login" required />
+            <input type="password" placeholder="Senha:" id="senha" required />
+            <button type="submit" class="btn-login">LOGIN</button>
+          </form>
 
           <p class="register-text">Não possui uma conta?</p>
           <button class="btn-register">Crie uma aqui!</button>
@@ -53,5 +53,6 @@
         <p class="email">@emailanonimos</p>
       </section>
     <script src="Entrar.js"></script>
+    <script src="loginback.js"></script>
   </body>
 </html>
