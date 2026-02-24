@@ -1,21 +1,29 @@
+import os
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
-import sqlite3
 import hashlib
 from fastapi.middleware.cors import CORSMiddleware
 
+# 1. MUDANÇA: Tiramos o 'import sqlite3' e colocamos o Supabase
+from supabase import create_client, Client
+
 app = FastAPI()
 
-# Configuração BLINDADA de CORS
+# Configuração BLINDADA de CORS (Mantida igual!)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],  # Permite todas as origens (Vercel, Localhost, etc)
+    allow_origins=["*"],
     allow_credentials=True,
-    allow_methods=["*"],  # Permite POST, GET, OPTIONS, etc.
-    allow_headers=["*"],  # Permite todos os headers
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
-# --- SEUS MODELOS ---
+# 2. MUDANÇA: Substituímos o 'iniciar_banco()' do SQLite por isso aqui:
+SUPABASE_URL = "https://supabase.com/dashboard/project/oqfnduzdddnoqxdxxobu"
+SUPABASE_KEY = "lTVOb0DfQSjIFiUG"
+supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+
+# --- SEUS MODELOS (Mantidos iguais!) ---
 class CadastroUsuario(BaseModel):
     nome: str
     email: str
@@ -25,54 +33,52 @@ class LoginUsuario(BaseModel):
     email: str
     senha: str
 
-# --- BANCO DE DADOS ---
-def iniciar_banco():
-    conexao = sqlite3.connect('banco_teste.db')
-    cursor = conexao.cursor()
-    cursor.execute("""
-        CREATE TABLE IF NOT EXISTS usuarios(
-            id INTEGER PRIMARY KEY AUTOINCREMENT,
-            nome TEXT NOT NULL,
-            email TEXT UNIQUE,
-            senha_hash TEXT
-        )
-    """)
-    conexao.commit()
-    conexao.close()
-
-try:
-    iniciar_banco()
-except Exception as e:
-    print(f"Erro ao iniciar banco: {e}")
 
 # --- ROTAS ---
+
 @app.post("/testar_cadastro")
 async def testar_cadastro(usuario: CadastroUsuario):
-    conexao = sqlite3.connect('banco_teste.db')
-    cursor = conexao.cursor()
+    # A segurança do Hash continua igual (Isso é ótimo para falar na reunião!)
     senha_hash = hashlib.sha256(usuario.senha.encode()).hexdigest()
+    
     try:
-        cursor.execute("INSERT INTO usuarios (nome, email, senha_hash) VALUES (?, ?, ?)", 
-                       (usuario.nome, usuario.email, senha_hash))
-        conexao.commit()
-        return {"status": "sucesso", "mensagem": f"Usuário {usuario.nome} cadastrado!"}
-    except sqlite3.IntegrityError:
-        raise HTTPException(status_code=400, detail="Este e-mail já existe no banco!")
-    finally:
-        conexao.close()
+        # 3. MUDANÇA: Trocamos o INSERT do SQL pelo comando do Supabase
+        response = supabase.table("usuarios").insert({
+            "nome": usuario.nome,
+            "email": usuario.email,
+            "senha_hash": senha_hash
+        }).execute()
+        
+        return {"status": "sucesso", "mensagem": f"Usuário {usuario.nome} cadastrado com sucesso no Supabase!"}
+        
+    except Exception as e:
+        # Se o e-mail já existir, o erro cai aqui
+        print(f"Erro no banco: {e}")
+        raise HTTPException(status_code=400, detail="Este e-mail já existe no banco de dados!")
+
 
 @app.post("/testar_login")
 async def testar_login(dados: LoginUsuario):
-    conexao = sqlite3.connect('banco_teste.db')
-    cursor = conexao.cursor()
-    cursor.execute("SELECT senha_hash, nome FROM usuarios WHERE email = ?", (dados.email,))
-    resultado = cursor.fetchone()
-    conexao.close()
-    
-    if not resultado:
-        raise HTTPException(status_code=400, detail="Usuário não encontrado!")
-    
-    if hashlib.sha256(dados.senha.encode()).hexdigest() == resultado[0]:
-        return {"status": "sucesso", "mensagem": f"Bem-vindo, {resultado[1]}!"}
-    else:
-        raise HTTPException(status_code=401, detail="Senha incorreta!")
+    try:
+        # 4. MUDANÇA: Trocamos o SELECT do SQL pela busca do Supabase
+        response = supabase.table("usuarios").select("*").eq("email", dados.email).execute()
+        
+        # Se a lista vier vazia, o usuário não existe
+        if not response.data:
+            raise HTTPException(status_code=400, detail="Usuário não encontrado!")
+        
+        # Pegamos o primeiro usuário que ele achou na lista
+        usuario_banco = response.data[0]
+        
+        # Verificamos a senha
+        if hashlib.sha256(dados.senha.encode()).hexdigest() == usuario_banco["senha_hash"]:
+            return {"status": "sucesso", "mensagem": f"Bem-vindo, {usuario_banco['nome']}!"}
+        else:
+            raise HTTPException(status_code=401, detail="Senha incorreta!")
+            
+    except HTTPException:
+        # Repassa os erros de senha ou usuário não encontrado
+        raise
+    except Exception as e:
+        print(f"Erro no banco: {e}")
+        raise HTTPException(status_code=500, detail="Erro interno ao conectar com o banco de dados.")
