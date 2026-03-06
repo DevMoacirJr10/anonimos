@@ -19,8 +19,8 @@ app.add_middleware(
 )
 
 # 2. MUDANÇA: Substituímos o 'iniciar_banco()' do SQLite por isso aqui:
-SUPABASE_URL = "https://supabase.com/dashboard/project/oqfnduzdddnoqxdxxobu"
-SUPABASE_KEY = "lTVOb0DfQSjIFiUG"
+SUPABASE_URL = "https://oqfnduzdddnoqxdxxobu.supabase.co"
+SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9xZm5kdXpkZGRub3F4ZHh4b2J1Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njk4NDM0NzcsImV4cCI6MjA4NTQxOTQ3N30.rZlLW17xMDeys8eobwnO7vhSYigxK88MrvhxTwgKIzc" 
 supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
 
 # --- SEUS MODELOS (Mantidos iguais!) ---

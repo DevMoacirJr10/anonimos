@@ -8,7 +8,8 @@ function App() {
   const [emailCad, setEmailCad] = useState('');
   const [senhaCad, setSenhaCad] = useState('');
 
-  const API_URL = "https://anonimos-wph7.onrender.com"; // Seu endereço no Render
+  const API_URL = "https://anonimos-wph7.onrender.com";
+ // Seu endereço no Render
 
   // 2. Função para o botão ENTRAR
   const handleLogin = async () => {
