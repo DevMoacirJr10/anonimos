@@ -20,6 +20,13 @@ function App() {
     });
     const dados = await res.json();
     alert(dados.mensagem || dados.detail);
+
+    if (res.ok){
+      setEmailLogin('');
+      setSenhaLogin('');
+    }
+
+
   };
 
   // 3. Função para o botão CRIAR CONTA
@@ -31,6 +38,12 @@ function App() {
     });
     const dados = await res.json();
     alert(dados.mensagem || dados.detail);
+
+    if (res.ok) {
+      setNomeCad('');
+      setEmailCad('');
+      setSenhaCad('');
+    }
   };
 
   return (
