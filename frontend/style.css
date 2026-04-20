@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+html {
+  font-size: 62.5%;
+}
+
 body {
   background: linear-gradient(180deg, rgb(1, 2, 20) 66%, rgb(13, 18, 82));
   background-repeat: no-repeat;
@@ -33,14 +37,14 @@ body {
   display: flex;
   justify-content: space-around;
   background-color: rgb(18, 18, 18);
-  padding: 1rem;
+  padding: 2rem;
   box-shadow: 0px 10px 20px rgb(0, 0, 0);
   flex-wrap: wrap;
 }
 
 .nav-link {
   font-family: "Joan", sans-serif;
-  font-size: 1.5em;
+  font-size: 2.5rem;
   text-decoration: none;
   color: white;
   transition: transform 0.1s;
@@ -87,7 +91,7 @@ body {
 
 .logo-name1 {
   font-family: "Jockey One", sans-serif;
-  font-size: 100px;
+  font-size: 10rem;
   color: white;
   margin: 0;
   line-height: 1;
@@ -132,7 +136,7 @@ body {
   background: rgb(234, 172, 49);
   color: white;
   font-family: "Joan", sans-serif;
-  font-size: 30px;
+  font-size: 3rem;
   text-decoration: none;
   padding: 10px 40px;
   border-radius: 20px;
@@ -142,4 +146,23 @@ body {
 
 .btn-login:hover {
   transform: scale(1.1);
+}
+
+@media (max-width: 480px) {
+  .navbar {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .nav-link {
+    font-size: 1.8rem;
+  }
+
+  .main-content {
+    gap: 1rem;
+  }
+
+  .logo-name1 {
+  font-size: 8vh
+  }
 }
